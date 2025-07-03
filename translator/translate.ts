@@ -14,10 +14,10 @@ const promptTemplate = ChatPromptTemplate.fromMessages([
   ["user", "{text}"],
 ]);
 
-export async function translate(originalLanguage: string, targetLanguage: string, text: string): Promise<string> {
+export async function translate(text: string): Promise<string> {
   const promptValue = await promptTemplate.invoke({
-    originalLanguage,
-    targetLanguage,
+    originalLanguage: config.originalLanguage,
+    targetLanguage: config.targetLanguage,
     text,
   });
   const response = await model.invoke(promptValue);

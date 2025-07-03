@@ -2,7 +2,6 @@ import { render, Box, Text, useInput } from "ink";
 import Spinner from "ink-spinner";
 import { useChat } from "./use-chat";
 import { translate } from "@/translator/translate";
-import { config } from "@/config";
 
 function ChatTUI() {
   const [state, dispatch] = useChat();
@@ -13,7 +12,7 @@ function ChatTUI() {
     if (key.return && state.input.length > 0) {
       dispatch({ type: "submit-text", text: state.input });
       dispatch({ type: "loading" });
-      const translated = await translate(config.originalLanguage, config.targetLanguage, state.input);
+      const translated = await translate(state.input);
       dispatch({ type: "submit-translation", text: translated });
     } else if (key.backspace || key.delete) {
       dispatch({ type: "input", text: state.input.slice(0, -1) });
