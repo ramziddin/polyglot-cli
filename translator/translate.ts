@@ -21,5 +21,5 @@ export async function translate(originalLanguage: string, targetLanguage: string
     text,
   });
   const response = await model.invoke(promptValue);
-  return response.content.toString();
+  return response.content.toString().trim();
 }
