@@ -7,7 +7,7 @@ const model = new ChatOllama({
   baseUrl: config.ollamaBaseUrl,
 });
 
-const systemTemplate = "Translate the following from {originalLanguage} into {targetLanguage}";
+const systemTemplate = "Translate the following from {originalLanguage} into {targetLanguage}. Do not include any other text in your response.";
 
 const promptTemplate = ChatPromptTemplate.fromMessages([
   ["system", systemTemplate],
