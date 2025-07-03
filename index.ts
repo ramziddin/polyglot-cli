@@ -21,6 +21,4 @@ program
 
 program.parse(process.argv);
 
-console.log(config);
-
 renderTUI();
